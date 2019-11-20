@@ -82,6 +82,7 @@ const CI_PROVIDERS = {
   'bitbucket': 'BITBUCKET_BUILD_NUMBER',
   'buildkite': 'BUILDKITE',
   'circle': 'CIRCLECI',
+  'codefresh': 'CI',
   'codeshipBasic': isCodeshipBasic,
   'codeshipPro': isCodeshipPro,
   'concourse': isConcourse,
@@ -168,6 +169,12 @@ const _providerCiParams = () => {
       'CIRCLE_PULL_REQUEST',
       'CIRCLE_REPOSITORY_URL',
       'CI_PULL_REQUEST',
+    ]),
+    codefresh: extract([
+      'CF_BUILD_ID',
+      'CF_BASE_BRANCH',
+      'CF_COMMIT_MESSAGE',
+      'CF_COMMIT_AUTHOR',
     ]),
     codeshipBasic: extract([
       'CI_BUILD_ID',
@@ -398,6 +405,14 @@ const _providerCommitParams = function () {
       // authorEmail: ???
       // remoteOrigin: ???
       // defaultBranch: ???
+    },
+    codefresh: {
+      sha: env.CF_BUILD_ID,
+      branch: env.CF_BASE_BRANCH,
+      message: env.CF_COMMIT_MESSAGE,
+      authorName: env.CF_COMMIT_AUTHOR,
+      // authorEmail: ???
+
     },
     codeshipBasic: {
       sha: env.CI_COMMIT_ID,

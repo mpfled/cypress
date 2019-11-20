@@ -263,6 +263,23 @@ describe "lib/util/ci_provider", ->
       authorName: "circleUsername"
     })
 
+  it "codefresh", ->
+    resetEnv = mockedEnv( {
+      CI: "TRUE"
+      CF_BUILD_ID: "cfBuildId"
+      CF_BASE_BRANCH: "cfBaseBranch"
+      CF_COMMIT_MESSAGE: "cfCommitMessage"
+      CF_COMMIT_AUTHOR: "cfCommitAuthor"
+    }, {clear: true})
+
+    expectsName("codefresh")
+    expectsCiParams({
+      cfBuildId: "cfBuildID"
+      cfBaseBranch: "cfBaseBranch"
+      cfCommitMessage: "cfCommitMessage"
+      cfCommitAuthor: "cfCommitAuthor"
+    })
+
   it "codeshipBasic", ->
     resetEnv = mockedEnv({
       CODESHIP: "TRUE"
