@@ -171,6 +171,7 @@ const _providerCiParams = () => {
       'CI_PULL_REQUEST',
     ]),
     codefresh: extract([
+      'CF_BRANCH',
       'CF_BUILD_ID',
       'CF_BASE_BRANCH',
       'CF_COMMIT_MESSAGE',
@@ -410,7 +411,9 @@ const _providerCommitParams = function () {
       sha: env.CF_BUILD_ID,
       branch: env.CF_BASE_BRANCH,
       message: env.CF_COMMIT_MESSAGE,
+      defaultBranch: env.CF_BRANCH
       authorName: env.CF_COMMIT_AUTHOR,
+      // remoteOrigin: ???
       // authorEmail: ???
 
     },

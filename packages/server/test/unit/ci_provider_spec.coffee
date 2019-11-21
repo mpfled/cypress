@@ -267,6 +267,7 @@ describe "lib/util/ci_provider", ->
     resetEnv = mockedEnv( {
       CI: "TRUE"
       CF_BUILD_ID: "cfBuildId"
+      CF_BRANCH: "cfBranch"
       CF_BASE_BRANCH: "cfBaseBranch"
       CF_COMMIT_MESSAGE: "cfCommitMessage"
       CF_COMMIT_AUTHOR: "cfCommitAuthor"
@@ -274,6 +275,7 @@ describe "lib/util/ci_provider", ->
 
     expectsName("codefresh")
     expectsCiParams({
+      cfBranch: "cfBranch"
       cfBuildId: "cfBuildID"
       cfBaseBranch: "cfBaseBranch"
       cfCommitMessage: "cfCommitMessage"
